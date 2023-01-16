@@ -1,0 +1,100 @@
+# примеры API-запросов
+
+# @baseUrl = http://localhost:8000/api/v1
+@baseUrl = http://80.78.241.240:8001/api/v1
+
+# создание продукта
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "ананас"
+}
+
+###
+
+# получение продуктов
+GET {{baseUrl}}/products/
+Content-Type: application/json
+
+###
+
+# обновление продукта
+PATCH {{baseUrl}}/products/22/
+Content-Type: application/json
+
+{
+  "description": "продукты первой необходимости"
+}
+
+###
+
+# удаление продукта
+DELETE {{baseUrl}}/products/1/
+Content-Type: application/json
+
+###
+
+# поиск продуктов по названию и описанию
+GET {{baseUrl}}/products/?search=помидор
+Content-Type: application/json
+
+###
+
+# создание склада
+POST {{baseUrl}}/stocks/
+Content-Type: application/json
+
+{
+  "address": "Заречная 50",
+  "positions": [
+    {
+      "product": 14,
+      "quantity": 1000,
+      "price": 10
+    },
+    {
+      "product": 10,
+      "quantity": 211000,
+      "price": 21900
+    }
+  ]
+}
+
+###
+GET {{baseUrl}}/stocks
+Content-Type: application/json
+
+###
+# обновляем записи на складе
+PATCH {{baseUrl}}/stocks/16/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 6,
+      "price": 11
+    },
+    {
+      "product": 6,
+      "quantity": 1000000,
+      "price": 151
+    }
+  ]
+}
+
+###
+
+# поиск складов, где есть определенный продукт
+GET {{baseUrl}}/stocks/?products=14
+Content-Type: application/json
+
+
+###
+# поиск складов, где есть определенный продукт
+GET {{baseUrl}}/stocks/?products=импорт
+Content-Type: application/json
+
+
